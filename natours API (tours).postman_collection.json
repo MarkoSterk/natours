@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "f949da7a-17cc-4270-a922-fc5f91ca0dff",
+		"name": "natours API (tours)",
+		"description": "API endpoints for manipulating Tours.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{URL}}app/v1/tours",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"New Test Tour\",\n    \"duration\": 1,\n    \"maxGroupSize\": 1,\n    \"difficulty\": \"easy\",\n    \"price\": 200,\n    \"summary\": \"Test tour\",\n    \"imageCover\": \"tour-3-cover.jpg\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}app/v1/tours/",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						""
+					]
+				},
+				"description": "POST create new tour"
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Tours",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}app/v1/tours/",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						""
+					]
+				},
+				"description": "GET All Tours"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}app/v1/tours/12",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"guides\": [\n        \"623d5bd77b0c932ea553421d\",\n        \"623dfcfbda2ec047f3ea8996\",\n        \"623dfd08da2ec047f3ea8998\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}app/v1/tours/623e010d9d3f275037df1b0f",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						"623e010d9d3f275037df1b0f"
+					]
+				},
+				"description": "PATCH Tour with specified ID"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}app/v1/tours/3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}app/v1/tours/5c88fa8cf4afda39709c296c",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						"5c88fa8cf4afda39709c296c"
+					]
+				},
+				"description": "DELETE One Tour with specified ID"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}app/v1/tours/tours-within/400/center/34.111745,-118.113491/unit/mi",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}app/v1/tours/tours-within/400/center/34.111745,-118.113491/unit/mi",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						"tours-within",
+						"400",
+						"center",
+						"34.111745,-118.113491",
+						"unit",
+						"mi"
+					]
+				},
+				"description": "GET All tours within a specified distance ('/tours-within/DISTANCE/') from the center point ('/center/LATLNG/') and specified unit ('/unit/mi' OR '/unit/km')"
+			},
+			"response": []
+		},
+		{
+			"name": "{{URL}}app/v1/tours/distances/34.111745,-118.113491/unit/mi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}app/v1/tours/distances/34.111745,-118.113491/unit/mi",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						"distances",
+						"34.111745,-118.113491",
+						"unit",
+						"mi"
+					]
+				},
+				"description": "GET distances of all tours from the center point ('/distances/LATLNG/') and specified unit ('/unit/mi' OR '/unit/km')"
+			},
+			"response": []
+		},
+		{
+			"name": "GET One Tour with ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}app/v1/tours/5c88fa8cf4afda39709c2955",
+					"host": [
+						"{{URL}}app"
+					],
+					"path": [
+						"v1",
+						"tours",
+						"5c88fa8cf4afda39709c2955"
+					]
+				},
+				"description": "GET One Tour with specified ID"
+			},
+			"response": []
+		}
+	]
+}

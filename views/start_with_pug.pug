@@ -1,0 +1,23 @@
+doctype html 
+html
+    head
+        //- Inserting variable with #{} into text
+        title Natours | #{tour}
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='shortcut icon' type='image/png' href='img/favicon.png')
+    
+    body
+        //- declaring h1 tag in pug
+        h1= tour
+
+        //- Using JS in pug
+        h2= user.toUpperCase()
+        //- h1 The Park Camper
+
+        //- Unbuffered code with '-', declaring varible
+        - const x = 9;
+
+        //- simple operations on variables
+        h2= 2*x
+
+        p This is just some text 
