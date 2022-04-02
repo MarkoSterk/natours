@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -26,6 +27,20 @@ app.set('view engine', 'pug'); //templating engine
 app.set('views', path.join(__dirname, 'views')); //specifying folder with views (templates)
 
 //global middleware stack
+//Implement CORS - cross origin resource sharing
+//For simple requests only (GET and POST)
+app.use(cors());
+
+// Allow only a specific domain to consume the API
+// app.use(cors({
+//   origin: 'https://www.example.com'
+// }))
+
+//FOR OTHER REQUESTS
+//PREFLIGHT PHASE
+app.options('*', cors());
+//app.options('/app/v1/tours/:id', cors()) //for one resource
+
 //serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
