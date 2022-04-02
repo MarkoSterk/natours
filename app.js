@@ -20,6 +20,8 @@ const viewRouter = require('./routes/viewRoutes');
 //Start express app
 const app = express();
 
+app.enable('trust proxy');
+
 app.set('view engine', 'pug'); //templating engine
 app.set('views', path.join(__dirname, 'views')); //specifying folder with views (templates)
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
-process.on('uncaughtException', err => {
+process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION!! Shutting down...');
   console.log(err.name, err.message);
   process.exit(1);
@@ -40,4 +40,13 @@ process.on('unhandledRejection', (err) => {
   });
 });
 
-
+//Heroku sends a SIGTERM signal every 24h to restart the server
+//to keep in in "good health"
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECIEVED. Shutting down gracefully');
+  server.close(() => {
+    //process.exit(1) is not needed because 'SIGTERM' will
+    //automatically shut down the server
+    console.log('Process terminated!');
+  });
+});
