@@ -51,6 +51,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 // });
 
 const createBookingCheckout = async (session) => {
+  console.log(session);
+  
   const tour = session.client_reference_id;
   const user = (await User.findOne({ email: session.email }))._id;
   const price = session.amount_total / 100; //conversion from cents back to dollars/eur
@@ -73,6 +75,7 @@ exports.webhookCheckout = (req, res, next) => {
       process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err) {
+    console.log('Failed at try-catch');
     return res.status(400).send(`Webhook error: ${err.message}`);
   }
 
