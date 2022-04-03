@@ -4,6 +4,8 @@ const authController = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true });
 
+//All routes for the front-end/website
+
 router.use(authController.protect);
 
 router
